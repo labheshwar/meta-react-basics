@@ -12,51 +12,58 @@ function App() {
   function plus(e) { 
     e.preventDefault(); 
     setResult((result) => result + Number(inputRef.current.value)); 
+    inputRef.current.focus();
   }; 
  
-  function minus(e) { 
-  	// Add the code for the minus function 
+  function minus(e) {
+    e.preventDefault();
+    setResult((result) => result - Number(inputRef.current.value));
+    inputRef.current.focus();
   };
  
-  function times(e) { 
-    // Add the code for the plus function 
+  function times(e) {
+    e.preventDefault();
+    setResult((result) => result * Number(inputRef.current.value));
+    inputRef.current.focus();
   }; 
  
-  function divide(e) { 
-    // Add the code for the divide function 
+  function divide(e) {
+    e.preventDefault();
+    setResult((result) => result / Number(inputRef.current.value));
+    inputRef.current.focus();
   };
  
   function resetInput(e) { 
-    // Add the code for the resetInput function 
+    e.preventDefault();
+    inputRef.current.value = "";
   }; 
  
   function resetResult(e) { 
-  	// Add the code for the resetResult function 
+    e.preventDefault();
+    setResult(0);
   }; 
  
-  return ( 
-    <div className="App"> 
-      <div> 
-        <h1>Simplest Working Calculator</h1> 
-      </div> 
-      <form> 
-        <p ref={resultRef}> 
-          {/* add the value of the current total */} 
-        </p> 
+  return (
+    <div className='App'>
+      <div>
+        <h1>Simplest Working Calculator</h1>
+      </div>
+      <form>
+        <p ref={resultRef}>{result}</p>
         <input
-          pattern="[0-9]" 
-          ref={inputRef} 
-          type="number" 
-          placeholder="Type a number" 
-        /> 
-        <button onClick={plus}>add</button> 
-        {/* Add the subtract button */} 
-        {/* Add the multiply button */} 
-        {/* Add the divide button */} 
-        {/* Add the resetInput button */} 
-        {/* Add the resetResult button */} 
-      </form> 
-    </div> 
+          pattern='[0-9]'
+          ref={inputRef}
+          type='number'
+          placeholder='Type a number'
+        />
+        <button onClick={plus}>add</button>
+        <button onClick={minus}>subtract</button>
+        <button onClick={times}>multiply</button>
+        <button onClick={divide}>divide</button>
+        <button onClick={resetInput}>reset input</button>
+        <button onClick={resetResult}>reset result</button>
+      </form>
+    </div>
   ); 
 } 
  
